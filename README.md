@@ -1,4 +1,4 @@
-# Projeto de Estudo: Spring Batch
+# Projeto Base: Spring Batch
 
 Este projeto é dedicado ao estudo do Spring Batch e sua integração na estrutura do Spring Framework. 
 Aqui estão alguns dos principais conceitos e configurações que você encontrará neste projeto:
