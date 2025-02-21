@@ -28,12 +28,12 @@ import javax.persistence.Table;
 @AttributeOverride(name = "usuarioAlteracao", column = @Column(name = "PS_USUARIO_ALTERACAO"))
 public class PessoaDestinoEntity {
 
-    @Id
-    @Column(name = "PS_ID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+        @Id
+        @Column(name = "PS_ID", nullable = false)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    @Column(name = "PS_NOME", nullable = false)
+        @Column(name = "PS_NOME", nullable = false)
     private String nome;
 
     @Column(name = "PS_APELIDO")
