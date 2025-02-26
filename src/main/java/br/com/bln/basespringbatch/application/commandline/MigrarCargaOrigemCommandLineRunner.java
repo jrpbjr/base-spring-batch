@@ -17,62 +17,62 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-@Log4j2
-@Component
-@Order(2)
-public class MigrarCargaOrigemCommandLineRunner implements CommandLineRunner {
-
-    @PersistenceContext(unitName = "persistenceUnitOrigem")
-    private EntityManager entityManagerOrigem;
-
-    @Autowired
-    private PessoaRepository pessoaRepository;
-
-    @Override
-    @Transactional(value = "origemTransactionManager")
-    public void run(String... args) throws Exception {
-//        Boolean existeCargaOrigem = (Boolean) entityManagerOrigem.createNativeQuery("SELECT count(*) > 0 FROM tb_pessoa").getSingleResult();
-        BigInteger resultado = (BigInteger) entityManagerOrigem.createNativeQuery("SELECT count(*) > 0 FROM tb_pessoa").getSingleResult();
-        boolean existeCargaOrigem = resultado.intValue() == 1;
-
-
-        inserirRegistroArquivoMigracao(existeCargaOrigem);
-        inserirRegistrosAleatorios(existeCargaOrigem, 999945);
-    }
-
-    private void inserirRegistroArquivoMigracao(Boolean existeCargaOrigem) {
-        if (!existeCargaOrigem) {
-            log.info("## Iniciando SQL para inserir registros DB_ORIGEM...");
-            try {
-                String scriptTabelas = FileHelper.getFileInResources("db/banco-origem-carga-inicial.sql");
-                entityManagerOrigem.createNativeQuery(scriptTabelas).executeUpdate();
-            } catch (Exception e) {
-                log.error("## Erro ao migrar scrips para o banco de origem.");
-                e.printStackTrace();
-                throw e;
-            }
-        }
-    }
-
-    private void inserirRegistrosAleatorios(Boolean existeCargaOrigem, int quantidadeRegistrosParaInserir) {
-        if (!existeCargaOrigem) {
-            log.info(String.format("## Iniciando inserção de '%s' no banco!", quantidadeRegistrosParaInserir));
-            List<PessoaEntity> pessoaEntityList = new ArrayList<>();
-
-            for (int i = 0; i < quantidadeRegistrosParaInserir; i++) {
-                pessoaEntityList.add(
-                        PessoaEntity.builder()
-                                .nome(UUID.randomUUID().toString())
-                                .login(UUID.randomUUID().toString())
-                                .senha(UUID.randomUUID().toString())
-                                .apelido(UUID.randomUUID().toString())
-                                .build()
-                );
-            }
-
-            pessoaRepository.saveAll(pessoaEntityList);
-            log.info("## Inserção concluida!");
-        }
-    }
-}
+//
+//@Log4j2
+//@Component
+//@Order(2)
+//public class MigrarCargaOrigemCommandLineRunner implements CommandLineRunner {
+//
+//    @PersistenceContext(unitName = "persistenceUnitOrigem")
+//    private EntityManager entityManagerOrigem;
+//
+//    @Autowired
+//    private PessoaRepository pessoaRepository;
+//
+//    @Override
+//    @Transactional(value = "origemTransactionManager")
+//    public void run(String... args) throws Exception {
+////        Boolean existeCargaOrigem = (Boolean) entityManagerOrigem.createNativeQuery("SELECT count(*) > 0 FROM tb_pessoa").getSingleResult();
+//        BigInteger resultado = (BigInteger) entityManagerOrigem.createNativeQuery("SELECT count(*) > 0 FROM tb_pessoa").getSingleResult();
+//        boolean existeCargaOrigem = resultado.intValue() == 1;
+//
+//
+//        inserirRegistroArquivoMigracao(existeCargaOrigem);
+//        inserirRegistrosAleatorios(existeCargaOrigem, 100000000);
+//    }
+//
+//    private void inserirRegistroArquivoMigracao(Boolean existeCargaOrigem) {
+//        if (!existeCargaOrigem) {
+//            log.info("## Iniciando SQL para inserir registros DB_ORIGEM...");
+//            try {
+//                String scriptTabelas = FileHelper.getFileInResources("db/banco-origem-carga-inicial.sql");
+//                entityManagerOrigem.createNativeQuery(scriptTabelas).executeUpdate();
+//            } catch (Exception e) {
+//                log.error("## Erro ao migrar scrips para o banco de origem.");
+//                e.printStackTrace();
+//                throw e;
+//            }
+//        }
+//    }
+//
+//    private void inserirRegistrosAleatorios(Boolean existeCargaOrigem, int quantidadeRegistrosParaInserir) {
+//        if (!existeCargaOrigem) {
+//            log.info(String.format("## Iniciando inserção de '%s' no banco!", quantidadeRegistrosParaInserir));
+//            List<PessoaEntity> pessoaEntityList = new ArrayList<>();
+//
+//            for (int i = 0; i < quantidadeRegistrosParaInserir; i++) {
+//                pessoaEntityList.add(
+//                        PessoaEntity.builder()
+//                                .nome(UUID.randomUUID().toString())
+//                                .login(UUID.randomUUID().toString())
+//                                .senha(UUID.randomUUID().toString())
+//                                .apelido(UUID.randomUUID().toString())
+//                                .build()
+//                );
+//            }
+//
+//            pessoaRepository.saveAll(pessoaEntityList);
+//            log.info("## Inserção concluida!");
+//        }
+//    }
+//}
