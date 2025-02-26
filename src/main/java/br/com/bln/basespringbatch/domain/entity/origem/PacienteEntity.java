@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +21,7 @@ public class PacienteEntity {
 
     @Id
     @Column(name = "pac_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "pac_nome", nullable = false)
@@ -32,14 +34,28 @@ public class PacienteEntity {
     private String email;
 
     @Column(name = "pac_estcivil")
-    private Long estcivil; // Alterado para Long
+    private Long estcivil;
 
     @Column(name = "pac_nasc")
-    private Long nasc; // Alterado para Long
+    private LocalDate nasc;
 
     @Column(name = "pac_rg")
-    private Long rg; // Alterado para Long
+    private String rg;
 
     @Column(name = "pac_infantil")
-    private Long infantil; // Alterado para Long
+    private boolean infantil;
+
+    private Integer pacIdade;
+
+    public void calcularIdade() {
+        if (this.nasc != null) {
+            this.pacIdade = Period.between(this.nasc, LocalDate.now()).getYears();
+            this.infantil = this.pacIdade <= 16;
+        }
+    }
+    @PrePersist
+    @PreUpdate
+    private void preSalvar() {
+        calcularIdade();
+    }
 }
