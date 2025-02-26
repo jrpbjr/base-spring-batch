@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -19,12 +21,13 @@ import javax.persistence.Table;
 @Builder
 @Entity
 @DynamicUpdate
+
 public class PacienteDestino {
 
 
     @Id
     @Column(name = "pac_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "pac_nome", nullable = false)
@@ -37,15 +40,15 @@ public class PacienteDestino {
     private Long estcivil;
 
     @Column(name = "pac_rg")
-    private Long rg;
+    private String rg;
 
     @Column(name = "pac_nasc")
-    private Long nasc;
+    private LocalDate nasc;
 
     @Column(name = "pac_email")
-    private Long email;
+    private String email;
 
     @Column(name = "pac_infantil")
-    private Long infatil;
+    private Boolean infantil;
 
 }
