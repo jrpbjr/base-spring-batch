@@ -15,11 +15,11 @@ public class PacienteDestinoRepositoryItemWriter {
     @Autowired
     private PacienteDestinoRepository pacienteDestinoRepository;
 
-    @Bean
-    public RepositoryItemWriter<PacienteDestino> writer() {
-        RepositoryItemWriter<PacienteDestino> writer = new RepositoryItemWriter<>();
-        writer.setRepository(pacienteDestinoRepository);
-        writer.setMethodName("save");
-        return writer;
-    }
+//    @Bean
+//    public RepositoryItemWriter<PacienteDestino> writer() {
+//        RepositoryItemWriter<PacienteDestino> writer = new RepositoryItemWriter<>();
+//        writer.setRepository(pacienteDestinoRepository);
+//        writer.setMethodName("save");
+//        return writer;
+//    }
 }
