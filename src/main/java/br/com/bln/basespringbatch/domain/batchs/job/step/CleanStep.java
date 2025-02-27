@@ -22,10 +22,12 @@ public class CleanStep {
             PessoaDestinoCleanTasklet pessoaDestinoCleanTasklet,
             UsuarioDestinoCleanTasklet usuarioDestinoCleanTasklet,
             PacienteDestinoCleanTasklet pacienteDestinoCleanTasklet) {
+
         return stepBuilderFactory
                 .get("PESSOA_DESTINO_CLEAN_STEP")
                 .tasklet(pessoaDestinoCleanTasklet)
                 .tasklet(usuarioDestinoCleanTasklet)
+                .tasklet(pacienteDestinoCleanTasklet)
                 .build();
     }
 }

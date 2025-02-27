@@ -21,11 +21,11 @@ public class PacienteOrigemToPacienteDestino implements ItemProcessor<PacienteEn
                 .id(novoId)
                 .cpf(pacienteEntity.getCpf())
                 .nome(pacienteEntity.getNome())
-                .estcivil(Long.valueOf(pacienteEntity.getEstcivil())) // Conversão para Long
-                .rg(Long.valueOf(pacienteEntity.getRg()))
-                .nasc(Long.valueOf(pacienteEntity.getNasc()))
-                .email(Long.valueOf(pacienteEntity.getEmail()))
-                .infatil(Long.valueOf(pacienteEntity.getInfantil()))
+                .estcivil(Long.valueOf(pacienteEntity.getEstcivil()))
+                .rg((pacienteEntity.getRg()))
+                .nasc((pacienteEntity.getNasc()))
+                .email((pacienteEntity.getEmail()))
+                .infantil((pacienteEntity.isInfantil()))
                 .build();
     }
 }
