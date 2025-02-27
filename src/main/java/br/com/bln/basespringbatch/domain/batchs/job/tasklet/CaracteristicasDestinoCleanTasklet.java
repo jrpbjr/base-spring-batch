@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CaracteristicasDestinoCleanTaskelt  implements Tasklet {
+public class CaracteristicasDestinoCleanTasklet implements Tasklet {
     @Autowired
     private CaracteristicasDestinoRepository caracteristicasDestinoRepository;
 

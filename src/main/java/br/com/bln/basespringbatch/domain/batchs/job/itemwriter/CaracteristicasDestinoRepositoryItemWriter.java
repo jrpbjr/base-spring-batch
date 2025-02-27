@@ -15,12 +15,12 @@ public class CaracteristicasDestinoRepositoryItemWriter {
     @Autowired
     private CaracteristicasDestinoRepository caracteristicasDestinoRepository;
 
-    @Bean
-    public RepositoryItemWriter<CaracteristicasDestino> writer() {
-        RepositoryItemWriter<CaracteristicasDestino> writer = new RepositoryItemWriter<>();
-        writer.setRepository(caracteristicasDestinoRepository);
-        writer.setMethodName("save");
-        return writer;
-    }
+//    @Bean
+//    public RepositoryItemWriter<CaracteristicasDestino> writer() {
+//        RepositoryItemWriter<CaracteristicasDestino> writer = new RepositoryItemWriter<>();
+//        writer.setRepository(caracteristicasDestinoRepository);
+//        writer.setMethodName("save");
+//        return writer;
+//    }
 
 }

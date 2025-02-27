@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface CaracteristicasDestinoRepository extends JpaRepository<CaracteristicasDestino, Long> {
 
-    @Query("SELECT endereco.id FROM CaracteristicasDestino endereco")
+    @Query("SELECT Caracteristicas.id FROM CaracteristicasDestino Caracteristicas")
     List<Object[]> mapDeParam();
 
 
